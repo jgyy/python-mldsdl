@@ -2,7 +2,6 @@
 Seaborn
 """
 from warnings import filterwarnings
-import seaborn
 from seaborn import (
     histplot,
     pairplot,
@@ -13,6 +12,7 @@ from seaborn import (
     swarmplot,
     countplot,
     heatmap,
+    set as snsset
 )
 from pandas import DataFrame, read_csv
 from matplotlib.pyplot import figure, show
@@ -30,7 +30,7 @@ def wrapper():
     gear_counts = dframe["# Gears"].value_counts()
     gear_counts.plot(kind="bar")
     figure()
-    seaborn.set()
+    snsset()
     gear_counts.plot(kind="bar")
     print(dframe.head())
     figure()
@@ -43,7 +43,7 @@ def wrapper():
     jointplot(x="Eng Displ", y="CombMPG", data=dframe)
     lmplot(x="Eng Displ", y="CombMPG", data=dframe)
     figure()
-    seaborn.set(rc={"figure.figsize": (15, 5)})
+    snsset(rc={"figure.figsize": (15, 5)})
     axe = boxplot(x="Mfr Name", y="CombMPG", data=dframe)
     axe.set_xticklabels(axe.get_xticklabels(), rotation=45)
     figure()
