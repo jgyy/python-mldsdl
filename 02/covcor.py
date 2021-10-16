@@ -3,8 +3,7 @@ Covariance and Correlation
 """
 from numpy import corrcoef
 from numpy.random import normal
-from pylab import mean, dot, scatter
-from matplotlib.pyplot import figure, show
+from pylab import mean, dot, scatter, figure, show
 
 
 def wrapper():
