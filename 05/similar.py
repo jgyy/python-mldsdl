@@ -2,7 +2,6 @@
 Finding Similar Movies
 """
 from warnings import filterwarnings
-from os.path import join, dirname
 from pandas import DataFrame, read_csv, merge
 from numpy import size, mean
 
@@ -16,7 +15,7 @@ def wrapper():
     r_cols = ["user_id", "movie_id", "rating"]
     ratings = DataFrame(
         read_csv(
-            join(dirname(__file__), "ml-100k/u.data"),
+            "ml-100k/u.data",
             sep="\t",
             names=r_cols,
             usecols=range(3),
@@ -26,7 +25,7 @@ def wrapper():
     m_cols = ["movie_id", "title"]
     movies = DataFrame(
         read_csv(
-            join(dirname(__file__), "ml-100k/u.item"),
+            "ml-100k/u.item",
             sep="|",
             names=m_cols,
             usecols=range(2),
