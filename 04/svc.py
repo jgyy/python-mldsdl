@@ -3,7 +3,7 @@ Support Vector Machines
 """
 from numpy import array, float as npfloat, meshgrid, arange, c_
 from numpy.random import seed, uniform, normal
-from matplotlib.pyplot import figure, show, scatter, contourf, cm
+from matplotlib.pyplot import figure, show, scatter, contourf
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.svm import SVC
 
@@ -43,7 +43,7 @@ def plot_predictions(clf, xdata, ydata):
     zdata = clf.predict(sample_points)
     figure(figsize=(8, 6))
     zdata = zdata.reshape(xxx.shape)
-    contourf(xxx, yyy, zdata, cmap=cm.Paired, alpha=0.8)
+    contourf(xxx, yyy, zdata, cmap="Paired", alpha=0.8)
     scatter(xdata[:, 0], xdata[:, 1], c=ydata.astype(npfloat))
 
 
