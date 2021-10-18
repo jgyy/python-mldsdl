@@ -1,6 +1,7 @@
 """
 Reinforcement Learning
 """
+from os import system
 from time import sleep
 from random import seed, uniform
 from gym import make
@@ -60,6 +61,7 @@ def wrapper():
         while not done and trip_length < 25:
             action = argmax(q_table[state])
             next_state, _, done, _ = streets.step(action)
+            system("cls")
             print("Trip number " + str(tripnum) + " Step " + str(trip_length))
             print(streets.render(mode="ansi"))
             sleep(0.5)
