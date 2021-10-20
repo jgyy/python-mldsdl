@@ -1,12 +1,13 @@
 """
 Decision Trees
 """
-from io import StringIO
+from io import StringIO, BytesIO
 from os.path import dirname, join
 from pandas import DataFrame, read_csv
 from sklearn.tree import DecisionTreeClassifier, export_graphviz
 from sklearn.ensemble import RandomForestClassifier
 from pydotplus import graph_from_dot_data
+from PIL import Image
 
 
 def wrapper():
@@ -33,8 +34,8 @@ def wrapper():
     dot_data = StringIO()
     export_graphviz(clf, out_file=dot_data, feature_names=features)
     graph = graph_from_dot_data(dot_data.getvalue())
-    with open(join(dirname(__file__), "decision.png"), "wb") as img:
-        img.write(graph.create_png())
+    img = Image.open(BytesIO(graph.create_png()))
+    img.show()
     clf = RandomForestClassifier(n_estimators=10)
     clf = clf.fit(xdata.values, ydata.values)
     print(clf.predict([[10, 1, 4, 0, 0, 0]]))
